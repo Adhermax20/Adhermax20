@@ -1,0 +1,220 @@
+DISP "*Informação obrigatoria*".
+Message "Bem vindo!" view-as alert-box info buttons OK.
+ DEF VAR CPF AS DEC FORMAT "999,999,999,99" label 'Informe o CPF: '
+    init ''.
+        FORM CPF WITH FRAME f-fusca.
+        UPDATE CPF.
+
+ IF FRAME f-fusca CPF ENTERED THEN
+     ASSIGN INPUT FRAME f-fusca CPF:TOOLTIP = 'numeros puros2'.
+ IF (CPF < 000000010) THEN
+     MESSAGE "Erro insira os dados novamente" VIEW-AS ALERT-BOX.
+ IF (CPF > 000000101) THEN
+     MESSAGE "Acessign..." VIEW-AS ALERT-BOX.
+UPDATE CPF.
+
+
+define variable c-nome as character format "x(30)" label "Nome".
+     form c-nome at row 2 column 12 colon-aligned
+       with frame f-janela3d
+       title "Digite as informações"
+       three-d side-labels view-as dialog-box
+    size 50 by 5.
+update c-nome
+  with frame f-janela3d.
+IF c-nome = 'Andre' THEN  
+   MESSAGE "Usuario cancelado" view-as ALERT-BOX.
+ELSE
+    MESSAGE "Usuario:"c-nome + " (CONECTADO)" VIEW-AS ALERT-BOX.
+UPDATE c-nome.
+
+
+
+define variable i as integer initial 192.
+define variable d as CHAR initial 
+ "Acessando".
+    display decimal(today) format ">>>,>>>,>>9" skip
+       decimal("9283.12") format ">>>,>>>,>>9" skip
+       decimal(i) format ">>>,>>>,>>9" skip
+       DECIMAL ("2018.10") FORMAT ">>>,>>>,>>9".
+ message d view-as alert-box.
+DISPLAY "bem vindo(a) a NASA".
+
+
+
+DEF BUTTON b-button LABEL "Login" AUTO-GO.
+FORM b-button AT ROW 12 COL 35 WITH FRAME f-juliet size 75 by 22.
+ON "choose":U OF b-button IN FRAME f-juliet
+    MESSAGE "Bem vindo a NASA" VIEW-AS ALERT-BOX WARNING TITLE "Bem vindo(a), ficamos felizes :)!".
+UPDATE b-button WITH FRAME f-juliet.
+
+/*Use suas credenciais para entrar no site da NASA*/
+
+
+DISP "Olá usuário X".
+DEF VAR usuario AS CHAR FORMAT "x(20)".
+DEF VAR codigo AS INT NO-UNDO.
+UPDATE usuario codigo.
+IF (codigo > 999999) THEN 
+    MESSAGE "(Acesso concedido)" VIEW-AS ALERT-BOX.
+MESSAGE "Olá, Usuário:"usuario + " - " + "Codigo Secreto:"codigo VIEW-AS ALERT-BOX.
+MESSAGE "Aproveite ao máximo, "usuario + "!" VIEW-AS ALERT-BOX WARNING TITLE "BEM VINDO(a) A NASA".
+/*Comando para utilizar os botões de acesso */
+DISP "'O SEU OBJETIVO É O NOSSO TAMBÉM, VAMOS JUNTOS!'"
+    WITH 1 COLUMN.
+
+
+
+DEF VAR auxiliar AS CHAR FORMAT "x(20)".
+ASSIGN auxiliar = "Dê sua opinião". 
+    IF auxiliar = "Dê sua opinião" THEN DO:
+    MESSAGE "melhoramos a plataforma através da sua colaboração" SKIP
+        "Conte-nos sua opinião, Obrigado :)!!!" VIEW-AS ALERT-BOX.
+    ASSIGN auxiliar = "Até mais!!!".                 
+    MESSAGE "BOM DIA(TARDE/NOITE)!!" SKIP
+        auxiliar VIEW-AS ALERT-BOX.
+END.
+
+/*Comando para inserir datas e informações específicas (idade, consulta, eventos)*/
+
+DEF VAR dia AS INT FORMAT "99" init 1
+    TRIGGERS:
+ON ENTRY MESSAGE 'Escolha as datas'.
+END.
+
+
+ DEF VAR ano AS INT format "9999" init '1980'.
+ DEF VAR ndias AS CHAR FORM "x(12)".
+ DEF VAR mes AS CHAR FORMAT "x(15)"
+     VIEW-AS COMBO-BOX LIST-ITEMS
+      '*Informe o mes*', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+     MOUSE-POINTER 'glove' NO-UNDO init "*Informe o mes*".
+DISPLAY "Informe seus dados abaixo: ".
+UPDATE dia 
+       ano
+       mes.
+/*Comando condicional, verifique se os dados estão corretos*/
+IF dia = 17 THEN
+IF ano = 2002 THEN
+IF  mes = 'Setembro' THEN
+     MESSAGE "Good morning, Adhermax!!!" VIEW-AS ALERT-BOX WARNING TITLE "Usuário encontrado".
+ELSE
+   MESSAGE "Erro ao fazer Login" VIEW-AS ALERT-BOX. 
+
+   
+   
+DEF VAR natal AS CHAR FORMAT "x(10)" LABEL 'Dia/Lançamento'
+   INIT ''.
+UPDATE natal.
+
+DEF VAR ataque AS CHAR FORM "x(20)" 
+     VIEW-AS COMBO-BOX LIST-ITEMS
+    'Radar', 'Missil', 'Artilharia', 'Infantaria' INIT "Radar".
+FORM ataque WITH FRAME f-al SIZE 110 BY 50
+    ROW 1 VIEW-AS DIALOG-BOX.
+
+
+DEF VAR defesa AS CHAR FORM "x(20)" 
+     VIEW-AS COMBO-BOX LIST-ITEMS
+    'Radar', 'Missil', 'Artilharia', 'Infantaria' INIT "Radar".
+FORM defesa WITH FRAME f-cal SIZE 100 BY 50
+    ROW 1 VIEW-AS DIALOG-BOX.
+
+DEF VAR reserva AS CHAR FORM "x(20)" 
+     VIEW-AS COMBO-BOX LIST-ITEMS
+    'Radar', 'Missil', 'Artilharia', 'Infantaria' INIT "Radar".
+FORM reserva WITH FRAME f-ocal SIZE 120 BY 50
+    ROW 1 VIEW-AS DIALOG-BOX.
+UPDATE ataque defesa reserva WITH 1 COLUMN FRAME f-ocal.
+
+
+DEF VAR matricula AS INT INIT 0 FORM "99999".
+    FORM matricula 
+        WITH FRAME f-gol.
+    UPDATE matricula WITH FRAME f-gol.
+    IF FRAME f-gol matricula ENTERED THEN
+        MESSAGE "Encontrado" INPUT FRAME f-gol matricula.
+    IF (matricula > 20000) THEN
+        MESSAGE "ERROR 404 NOT FOUND" VIEW-AS ALERT-BOX WARNING TITLE "Corrija a informação".
+    ELSE 
+        MESSAGE "Redirecionando..." VIEW-AS ALERT-BOX.
+
+        
+
+ DEF BUTTON b-bit LABEL "Next" AUTO-GO.
+ FORM b-bit AT ROW 25 COL 25 WITH FRAME f-frame.
+ /*Comando para utilizar os botões de acesso */
+ ON "choose":U OF b-bit IN FRAME f-frame
+    MESSAGE "Verificando Informações... clique em OK e depois clique em 'ENTER'" view-as alert-box.
+    message "Redirecionando..." view-as alert-box info buttons OK-CANCEL.
+    message "Clique em 'OK' e depois em 'Next'" view-as alert-box information buttons OK.
+UPDATE b-bit WITH FRAME f-frame.
+
+
+
+DISPLAY 'Valor(R$): '.
+DEF VAR pode AS CHAR FORMAT "x(15)" LABEL "".
+FORM pode AT ROW 2 COLUMN 12 COLON-ALIGNED
+        WITH FRAME f-frame
+    TITLE "Escolha uma transferencia"
+    THREE-D SIDE-LABELS VIEW-AS DIALOG-BOX 
+    SIZE 50 BY 50.
+UPDATE pode.
+
+
+
+DEFINE VARIABLE TECERACT AS INT FORMAT "99999,9" LABEL "Numero da Conta"
+    INIT ''.
+     UPDATE TECERACT.
+     MESSAGE "transferir agora?" VIEW-AS ALERT-BOX INFO BUTTONS YES-NO.
+     MESSAGE "valor:"pode("R$") + " - " + "transferencia para conta:"TECERACT VIEW-AS ALERT-BOX.
+DEF BUTTON b-but LABEL "&CONFIRMAR" AUTO-GO.
+FORM b-but WITH FRAME f-me.
+ON "choose":U OF b-but IN FRAME f-me
+    MESSAGE "Transfery suceful" VIEW-AS ALERT-BOX INFO BUTTONS OK.
+
+
+
+
+DEFINE VARIABLE kepler AS CHARACTER NO-UNDO EXTENT 4.
+DEFINE VARIABLE exit-prompt AS CHARACTER NO-UNDO.
+DISP "PAINEL DE CONTROLE DE LANÇAMENTO" skip
+     "01001100 01100001 01101110 ".
+
+ 
+IF PROGRESS EQ "FULL" THEN
+  exit-prompt = " 3. VOLTAR".
+ELSE IF PROGRESS EQ "QUERY" THEN
+  exit-prompt = " 3. REDEFINIR".
+ELSE IF PROGRESS EQ "RUN-TIME" THEN
+  exit-prompt = "3. SAIR AGORA".
+else if progress eq "run-time" then
+  exit-prompt = "3. EXIT".
+
+DO WHILE TRUE:
+  DISPLAY
+    "  1. ADICIONAR" @ kepler[1] SKIP
+    "  2. EXCLUIR "    @ kepler[2] SKIP
+    "  4. VOLTAR " @ kepler[3] skip
+    " 3. EXIT " @ kepler[4] 
+    FORMAT "x(26)" SKIP
+  WITH FRAME choices NO-LABELS.
+
+  CHOOSE FIELD kepler AUTO-RETURN WITH FRAME choices
+    TITLE "OPÇÕES" CENTERED ROW 10.
+  HIDE FRAME choices.
+  
+  IF FRAME-INDEX EQ 1 THEN MESSAGE
+    "Escolha o local!." view-as alert-box info buttons OK.
+    
+       ELSE IF FRAME-INDEX EQ 2 THEN MESSAGE
+         "Escolha um arquivo!." view-as alert-box info buttons OK.
+  
+            ELSE IF FRAME-INDEX EQ 3 THEN MESSAGE
+              "Defina o arquivo!." view-as alert-box info buttons OK.
+                ELSE IF FRAME-INDEX EQ 4 THEN RETURN.
+MESSAGE "Você está usando o procedimento:" PROGRESS
+view-as alert-box information buttons OK.
+MESSAGE "Utilizar:"kepler[1] + ' - ' + "Index indefered:"exit-prompt VIEW-AS ALERT-BOX.
+
+END.
